@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angry Birds -tyylinen peli</title>
+    <title>Hepobirds</title>
     <style>
         body { margin: 0; padding: 0; overflow: hidden; }
         canvas { display: block; background: url('background.png') no-repeat center center; background-size: cover; }
@@ -262,6 +262,36 @@
             requestAnimationFrame(animate);
         }
 
+        function handleStart(event) {
+            event.preventDefault();
+            const touch = event.touches[0];
+            const dist = Math.sqrt((touch.clientX - bird.x) ** 2 + (touch.clientY - bird.y) ** 2);
+            if (dist < bird.radius) {
+                bird.isDragging = true;
+                bird.isFlying = false;
+            }
+        }
+
+        function handleMove(event) {
+            event.preventDefault();
+            if (bird.isDragging) {
+                const touch = event.touches[0];
+                bird.x = touch.clientX;
+                bird.y = touch.clientY;
+            }
+        }
+
+        function handleEnd(event) {
+            event.preventDefault();
+            if (bird.isDragging) {
+                bird.isDragging = false;
+                bird.isFlying = true;
+                const touch = event.changedTouches[0];
+                bird.velocityX = (bird.initialX - touch.clientX) * 0.2;  // Voimakkaampi ritsa
+                bird.velocityY = (bird.initialY - touch.clientY) * 0.2;  // Voimakkaampi ritsa
+            }
+        }
+
         canvas.addEventListener('mousedown', (e) => {
             const dist = Math.sqrt((e.clientX - bird.x) ** 2 + (e.clientY - bird.y) ** 2);
             if (dist < bird.radius) {
@@ -285,6 +315,11 @@
                 bird.velocityY = (bird.initialY - e.clientY) * 0.2;  // Voimakkaampi ritsa
             }
         });
+
+        canvas.addEventListener('touchstart', handleStart, false);
+        canvas.addEventListener('touchmove', handleMove, false);
+        canvas.addEventListener('touchend', handleEnd, false);
+
     </script>
 </body>
 </html>
