@@ -1,3 +1,4 @@
+
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
@@ -10,22 +11,22 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            font-size: 24px;
+            font-size: 18px;
             font-family: Arial, sans-serif;
             color: white;
             background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
+            padding: 5px;
             border-radius: 5px;
         }
         #title {
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 24px;
+            font-size: 18px;
             font-family: Arial, sans-serif;
             color: white;
             background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
+            padding: 5px;
             border-radius: 5px;
         }
     </style>
@@ -59,9 +60,9 @@
 
         class Bird {
             constructor() {
-                this.radius = 20;
-                this.x = 150;
-                this.y = canvas.height - 100;
+                this.radius = 10; // Pienennetty
+                this.x = 50; // Pienennetty
+                this.y = canvas.height - 50; // Pienennetty
                 this.initialX = this.x;
                 this.initialY = this.y;
                 this.velocityX = 0;
@@ -69,8 +70,8 @@
                 this.isDragging = false;
                 this.isFlying = false;
                 this.image = birdImage;
-                this.imageWidth = 40;  // Aseta kuvasi leveys
-                this.imageHeight = 40; // Aseta kuvasi korkeus
+                this.imageWidth = 20;  // Pienennetty
+                this.imageHeight = 20; // Pienennetty
             }
 
             draw() {
@@ -164,8 +165,8 @@
         class Pig {
             constructor() {
                 this.image = pigImage;
-                this.width = 30;
-                this.height = 30;
+                this.width = 15; // Pienennetty
+                this.height = 15; // Pienennetty
                 this.isFalling = false;
                 this.x = 0;
                 this.y = 0;
@@ -189,28 +190,28 @@
 
         const bird = new Bird();
         const blocks = [
-            new Block(canvas.width - 150, canvas.height - 60, 100, 50),
-            new Block(canvas.width - 150, canvas.height - 120, 100, 50),
-            new Block(canvas.width - 150, canvas.height - 180, 100, 50),
-            new Block(canvas.width - 150, canvas.height - 240, 100, 50),
-            new Block(canvas.width - 150, canvas.height - 300, 100, 50),
-            new Block(canvas.width - 150, canvas.height - 360, 100, 50),
+            new Block(canvas.width - 100, canvas.height - 30, 50, 25), // Pienennetty
+            new Block(canvas.width - 100, canvas.height - 60, 50, 25), // Pienennetty
+            new Block(canvas.width - 100, canvas.height - 90, 50, 25), // Pienennetty
+            new Block(canvas.width - 100, canvas.height - 120, 50, 25), // Pienennetty
+            new Block(canvas.width - 100, canvas.height - 150, 50, 25), // Pienennetty
+            new Block(canvas.width - 100, canvas.height - 180, 50, 25), // Pienennetty
 
-            new Block(canvas.width - 300, canvas.height - 60, 100, 50),
-            new Block(canvas.width - 300, canvas.height - 120, 100, 50),
-            new Block(canvas.width - 300, canvas.height - 180, 100, 50),
-            new Block(canvas.width - 300, canvas.height - 240, 100, 50),
-            new Block(canvas.width - 300, canvas.height - 300, 100, 50),
-            new Block(canvas.width - 300, canvas.height - 360, 100, 50),
+            new Block(canvas.width - 200, canvas.height - 30, 50, 25), // Pienennetty
+            new Block(canvas.width - 200, canvas.height - 60, 50, 25), // Pienennetty
+            new Block(canvas.width - 200, canvas.height - 90, 50, 25), // Pienennetty
+            new Block(canvas.width - 200, canvas.height - 120, 50, 25), // Pienennetty
+            new Block(canvas.width - 200, canvas.height - 150, 50, 25), // Pienennetty
+            new Block(canvas.width - 200, canvas.height - 180, 50, 25), // Pienennetty
 
-            new Block(canvas.width - 450, canvas.height - 60, 100, 50),
-            new Block(canvas.width - 450, canvas.height - 120, 100, 50),
-            new Block(canvas.width - 450, canvas.height - 180, 100, 50),
-            new Block(canvas.width - 450, canvas.height - 240, 100, 50),
-            new Block(canvas.width - 450, canvas.height - 300, 100, 50),
-            new Block(canvas.width - 450, canvas.height - 360, 100, 50),
+            new Block(canvas.width - 300, canvas.height - 30, 50, 25), // Pienennetty
+            new Block(canvas.width - 300, canvas.height - 60, 50, 25), // Pienennetty
+            new Block(canvas.width - 300, canvas.height - 90, 50, 25), // Pienennetty
+            new Block(canvas.width - 300, canvas.height - 120, 50, 25), // Pienennetty
+            new Block(canvas.width - 300, canvas.height - 150, 50, 25), // Pienennetty
+            new Block(canvas.width - 300, canvas.height - 180, 50, 25), // Pienennetty
 
-            new Block(canvas.width - 300, canvas.height - 420, 100, 50)
+            new Block(canvas.width - 200, canvas.height - 210, 50, 25) // Pienennetty
         ];
 
         // Lisää possuja palikoiden päälle
@@ -228,14 +229,14 @@
 
         function drawSlingshot() {
             ctx.beginPath();
-            ctx.moveTo(150, canvas.height - 100);
+            ctx.moveTo(50, canvas.height - 50); // Pienennetty
             if (bird.isDragging) {
                 ctx.lineTo(bird.x, bird.y);
             } else {
-                ctx.lineTo(150, canvas.height - 100);
+                ctx.lineTo(50, canvas.height - 50); // Pienennetty
             }
             ctx.strokeStyle = 'black';
-            ctx.lineWidth = 5;
+            ctx.lineWidth = 2; // Pienennetty
             ctx.stroke();
             ctx.closePath();
         }
@@ -323,3 +324,4 @@
     </script>
 </body>
 </html>
+
